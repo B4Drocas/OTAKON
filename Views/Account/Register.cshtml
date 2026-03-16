@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Registrar - OTAKON";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body style="background: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="width: 100%; max-width: 450px; padding: 20px;">
+        <div style="background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); overflow: hidden; animation: slideUp 0.5s ease; border-top: 5px solid #dc3545;">
+            <!-- Header -->
+            <div style="padding: 40px 30px; text-align: center; color: #1a1a1a; border-bottom: 1px solid #f0f0f0;">
+                <img src="~/images/OTAKON - Cópia.png" alt="OTAKON Logo" style="max-width: 140px; height: auto; margin-bottom: 20px;" />
+                <h2 style="margin: 0; font-weight: 600; font-size: 28px; color: #1a1a1a;">OTAKON</h2>
+                <p style="margin: 10px 0 0 0; color: #999; font-size: 14px;">Criar sua conta</p>
+            </div>
+
+            <!-- Body -->
+            <div style="padding: 40px 30px;">
+                @if (ViewData["ErrorMessage"] != null)
+                {
+                    <div style="background-color: #f8d7da; color: #721c24; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #dc3545; font-size: 14px;">
+                        @ViewData["ErrorMessage"]
+                    </div>
+                }
+
+                @if (ViewData["SuccessMessage"] != null)
+                {
+                    <div style="background-color: #d4edda; color: #155724; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #28a745; font-size: 14px;">
+                        @ViewData["SuccessMessage"]
+                    </div>
+                }
+
+                <form method="post" action="/Account/Register">
+                    <!-- Full Name Field -->
+                    <div style="margin-bottom: 20px;">
+                        <label for="fullName" style="font-weight: 600; color: #1a1a1a; margin-bottom: 8px; display: block; font-size: 14px;">Nome Completo</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" 
+                               placeholder="Digite seu nome completo"
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Username Field -->
+                    <div style="margin-bottom: 20px;">
+                        <label for="username" style="font-weight: 600; color: #1a1a1a; margin-bottom: 8px; display: block; font-size: 14px;">Usuário</label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                               placeholder="Escolha um usuário único" required 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Email Field -->
+                    <div style="margin-bottom: 20px;">
+                        <label for="email" style="font-weight: 600; color: #1a1a1a; margin-bottom: 8px; display: block; font-size: 14px;">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                               placeholder="seu@email.com" required 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Password Field -->
+                    <div style="margin-bottom: 20px;">
+                        <label for="password" style="font-weight: 600; color: #1a1a1a; margin-bottom: 8px; display: block; font-size: 14px;">Senha</label>
+                        <input type="password" class="form-control" id="password" name="password" 
+                               placeholder="Mínimo 6 caracteres" required 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Password Confirm Field -->
+                    <div style="margin-bottom: 25px;">
+                        <label for="passwordConfirm" style="font-weight: 600; color: #1a1a1a; margin-bottom: 8px; display: block; font-size: 14px;">Confirmar Senha</label>
+                        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" 
+                               placeholder="Repita sua senha" required 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Register Button -->
+                    <button type="submit" style="width: 100%; padding: 13px; background: linear-gradient(135deg, #dc3545, #c82333); border: none; border-radius: 8px; color: white; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);">
+                        Criar Conta
+                    </button>
+
+                    <!-- Login Link -->
+                    <div style="text-align: center; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                        Já tem conta? <a href="/Account/Login" style="color: #dc3545; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">Faça login aqui</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

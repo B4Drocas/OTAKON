@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Dashboard - OTAKON";
+}
+
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2 style="margin-bottom: 10px; color: #1a1a2e; font-weight: 600;">Bem-vindo(a), João! 👋</h2>
+                    <p style="color: #666; font-size: 16px; line-height: 1.6; margin: 0;">
+                        Você está logado no sistema OTAKON. Aqui você poderá gerenciar seu perfil, 
+                        acessar recursos exclusivos e interagir com a comunidade.
+                    </p>
+                </div>
+                <a href="/Account/Logout" style="background-color: #dc3545; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap;">Sair</a>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 5px solid #667eea; transition: all 0.3s ease;">
+                    <div class="card-body">
+                        <div style="font-size: 32px; margin-bottom: 10px;">👤</div>
+                        <h5 class="card-title" style="color: #1a1a2e; font-weight: 600; margin-bottom: 10px;">Meu Perfil</h5>
+                        <p class="card-text text-muted" style="font-size: 14px; margin-bottom: 15px;">Visualize e edite suas informações pessoais</p>
+                        <a href="#" class="btn btn-sm" style="background-color: #667eea; color: white; border-radius: 6px; border: none; text-decoration: none; font-weight: 600;">Acessar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 5px solid #764ba2; transition: all 0.3s ease;">
+                    <div class="card-body">
+                        <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+                        <h5 class="card-title" style="color: #1a1a2e; font-weight: 600; margin-bottom: 10px;">Minhas Atividades</h5>
+                        <p class="card-text text-muted" style="font-size: 14px; margin-bottom: 15px;">Acompanhe seu histórico de atividades</p>
+                        <a href="#" class="btn btn-sm" style="background-color: #764ba2; color: white; border-radius: 6px; border: none; text-decoration: none; font-weight: 600;">Ver Histórico</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 5px solid #dc3545; transition: all 0.3s ease;">
+                    <div class="card-body">
+                        <div style="font-size: 32px; margin-bottom: 10px;">⚙️</div>
+                        <h5 class="card-title" style="color: #1a1a2e; font-weight: 600; margin-bottom: 10px;">Configurações</h5>
+                        <p class="card-text text-muted" style="font-size: 14px; margin-bottom: 15px;">Gerencie suas preferências do sistema</p>
+                        <a href="#" class="btn btn-sm" style="background-color: #dc3545; color: white; border-radius: 6px; border: none; text-decoration: none; font-weight: 600;">Configurar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

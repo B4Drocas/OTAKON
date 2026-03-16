@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Login - OTAKON";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body style="background: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="width: 100%; max-width: 450px; padding: 20px;">
+        <div style="background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); overflow: hidden; animation: slideUp 0.5s ease; border-top: 5px solid #dc3545;">
+            <!-- Header -->
+            <div style="padding: 40px 30px; text-align: center; color: #1a1a1a; border-bottom: 1px solid #f0f0f0;">
+                <img src="~/images/OTAKON - Cópia.png" alt="OTAKON Logo" style="max-width: 140px; height: auto; margin-bottom: 20px;" />
+                <h2 style="margin: 0; font-weight: 600; font-size: 28px; color: #1a1a1a;">OTAKON</h2>
+                <p style="margin: 10px 0 0 0; color: #999; font-size: 14px;">Bem-vindo de volta à comunidade</p>
+            </div>
+
+            <!-- Body -->
+            <div style="padding: 40px 30px;">
+                @if (ViewData["ErrorMessage"] != null)
+                {
+                    <div style="background-color: #f8d7da; color: #721c24; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #dc3545; font-size: 14px;">
+                        @ViewData["ErrorMessage"]
+                    </div>
+                }
+
+                <form method="post" action="/Account/Login">
+                    <!-- Username Field -->
+                    <div style="margin-bottom: 25px;">
+                        <label for="username" style="font-weight: 600; color: #1a1a1a; margin-bottom: 10px; display: block; font-size: 14px;">Usuário ou Email</label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                               placeholder="Digite seu usuário ou email" required autofocus 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Password Field -->
+                    <div style="margin-bottom: 25px;">
+                        <label for="password" style="font-weight: 600; color: #1a1a1a; margin-bottom: 10px; display: block; font-size: 14px;">Senha</label>
+                        <input type="password" class="form-control" id="password" name="password" 
+                               placeholder="Digite sua senha" required 
+                               style="border: 2px solid #e0e0e0; border-radius: 8px; padding: 12px 15px; font-size: 14px; background-color: #f9f9f9; transition: all 0.3s ease;" />
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div style="margin-bottom: 25px;">
+                        <input class="form-check-input" type="checkbox" id="remember" name="remember" style="width: 18px; height: 18px; margin-top: 2px; border: 2px solid #e0e0e0; border-radius: 4px; cursor: pointer; accent-color: #dc3545;" />
+                        <label class="form-check-label" for="remember" style="color: #666; font-size: 14px; cursor: pointer; user-select: none; margin-left: 8px;">
+                            Lembrar-me neste dispositivo
+                        </label>
+                    </div>
+
+                    <!-- Forgot Password -->
+                    <div style="text-align: right; margin-bottom: 25px;">
+                        <a href="#" style="color: #dc3545; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.3s ease;">Esqueceu a senha?</a>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" style="width: 100%; padding: 13px; background: linear-gradient(135deg, #dc3545, #c82333); border: none; border-radius: 8px; color: white; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);">
+                        Entrar
+                    </button>
+
+                    <!-- Sign Up Section -->
+                    <div style="text-align: center; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #666; font-size: 14px;">
+                        Não tem conta? <a href="/Account/Register" style="color: #dc3545; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">Criar uma agora</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
