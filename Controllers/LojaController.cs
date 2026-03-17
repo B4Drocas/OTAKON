@@ -1,11 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SeuProjeto.Models;
+using OTAKON.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 public class LojaController : Controller
 {
+    // 🔹 ACTION 1 - Lista de produtos
     public IActionResult Index()
     {
-        var produtos = new List<Produto>
+        List<Produto> produtos = GetProdutos();
+        return View(produtos);
+    }
+
+    // 🔹 ACTION 2 - Detalhe do produto
+    public IActionResult Detalhe(int id)
+    {
+        List<Produto> produtos = GetProdutos();
+
+        var produto = produtos.FirstOrDefault(p => p.IDProduto == id);
+
+        if (produto == null)
+            return NotFound();
+
+        return View(produto);
+    }
+
+    // 🔹 MÉTODO AUXILIAR (fica aqui embaixo 👇)
+    private List<Produto> GetProdutos()
+    {
+        return new List<Produto>
         {
             new Produto
             {
@@ -13,8 +36,8 @@ public class LojaController : Controller
                 Nome = "DanDaDan Vol.1",
                 Autor = "Yukinobu Tatsu",
                 Editora = "Shueisha",
-                Preco = 34.90m,
-                Imagem = "/images/dandadan.jpg"
+                Preco = 15.90m,
+                Imagem = "/images/dandadan.png"
             },
             new Produto
             {
@@ -22,8 +45,8 @@ public class LojaController : Controller
                 Nome = "Vinland Saga Vol.1",
                 Autor = "Makoto Yukimura",
                 Editora = "Kodansha",
-                Preco = 39.90m,
-                Imagem = "/images/vinland.jpg"
+                Preco = 14.90m,
+                Imagem = "/images/vinland.png"
             },
             new Produto
             {
@@ -31,8 +54,8 @@ public class LojaController : Controller
                 Nome = "Evangelion Vol.1",
                 Autor = "Yoshiyuki Sadamoto",
                 Editora = "Kadokawa",
-                Preco = 36.90m,
-                Imagem = "/images/evangelion.jpg"
+                Preco = 19.90m,
+                Imagem = "/images/evangelion.png"
             },
             new Produto
             {
@@ -40,8 +63,8 @@ public class LojaController : Controller
                 Nome = "Solo Leveling Vol.1",
                 Autor = "Chugong",
                 Editora = "D&C Media",
-                Preco = 42.90m,
-                Imagem = "/images/sololeveling.jpg"
+                Preco = 15.90m,
+                Imagem = "/images/sololeveling.png"
             },
             new Produto
             {
@@ -49,8 +72,8 @@ public class LojaController : Controller
                 Nome = "Berserk Vol.1",
                 Autor = "Kentaro Miura",
                 Editora = "Hakusensha",
-                Preco = 44.90m,
-                Imagem = "/images/berserk.jpg"
+                Preco = 19.90m,
+                Imagem = "/images/berserk.png"
             },
             new Produto
             {
@@ -58,11 +81,9 @@ public class LojaController : Controller
                 Nome = "Akira (One Shot)",
                 Autor = "Katsuhiro Otomo",
                 Editora = "Kodansha",
-                Preco = 49.90m,
-                Imagem = "/images/akira.jpg"
+                Preco = 20.90m,
+                Imagem = "/images/akira.png"
             }
         };
-
-        return View(produtos);
     }
 }

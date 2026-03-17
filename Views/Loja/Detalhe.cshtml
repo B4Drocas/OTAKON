@@ -1,0 +1,27 @@
+﻿@model OTAKON.Models.Produto
+
+<h1>@Model.Nome</h1>
+
+<div class="produto-detalhe">
+
+    <div>
+        <img src="@Model.Imagem" alt="@Model.Nome" />
+    </div>
+
+    <div class="info">
+
+        <p><strong>Autor:</strong> @Model.Autor</p>
+
+        <p><strong>Editora:</strong> @Model.Editora</p>
+
+        <p><strong>Preço:</strong> €@Model.Preco</p>
+
+        <button>Comprar</button>
+
+        <br /><br />
+
+        <a asp-action="Index">Voltar à Loja</a>
+
+    </div>
+
+</div>
