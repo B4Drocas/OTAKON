@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OTAKode.Data;
 
@@ -11,9 +12,11 @@ using OTAKode.Data;
 namespace OTAKode.Migrations
 {
     [DbContext(typeof(OtakonDbContext))]
-    partial class OtakonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260317121205_AddMangaTable")]
+    partial class AddMangaTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,7 +142,7 @@ namespace OTAKode.Migrations
                             FullName = "Administrador",
                             IsActive = true,
                             IsAdmin = true,
-                            PasswordHash = "$2a$11$zI.u/TjSvtvu0K7eH8XQweeV1xbGQKmJfJRfLSzxQADXBjfF.bQJm",
+                            PasswordHash = "$2a$11$yHDKLX7KWEOEhR7XhLpY1O.E.5QQGkPfF6JV.KpSL7cYYxPVqLOL6",
                             Username = "admin"
                         });
                 });

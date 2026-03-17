@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OTAKode.Data;
 
@@ -11,9 +12,11 @@ using OTAKode.Data;
 namespace OTAKode.Migrations
 {
     [DbContext(typeof(OtakonDbContext))]
-    partial class OtakonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260317120345_UpdateAdminPasswordHash")]
+    partial class UpdateAdminPasswordHash
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,65 +24,6 @@ namespace OTAKode.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("OTAKode.Models.Manga", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("Chapters")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CoverImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ViewCount")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Mangas");
-                });
 
             modelBuilder.Entity("OTAKode.Models.User", b =>
                 {
@@ -139,7 +83,7 @@ namespace OTAKode.Migrations
                             FullName = "Administrador",
                             IsActive = true,
                             IsAdmin = true,
-                            PasswordHash = "$2a$11$zI.u/TjSvtvu0K7eH8XQweeV1xbGQKmJfJRfLSzxQADXBjfF.bQJm",
+                            PasswordHash = "$2a$11$yHDKLX7KWEOEhR7XhLpY1O.E.5QQGkPfF6JV.KpSL7cYYxPVqLOL6",
                             Username = "admin"
                         });
                 });

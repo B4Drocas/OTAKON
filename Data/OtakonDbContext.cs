@@ -11,6 +11,7 @@ namespace OTAKode.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Manga> Mangas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +28,8 @@ namespace OTAKode.Data
 
             // Criar usuário admin padrão
             // Senha: admin123 (pré-hashada com BCrypt)
-            var adminPasswordHash = "$2a$11$Dv3aeNe5N5kJnVVy4Kqum.Lq2W0g7EJ8B2nH6mR6kJ7wNL7vGGh0i";
+            // Hash gerado de: admin123
+            var adminPasswordHash = "$2a$11$zI.u/TjSvtvu0K7eH8XQweeV1xbGQKmJfJRfLSzxQADXBjfF.bQJm";
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
