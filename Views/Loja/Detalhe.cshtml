@@ -16,7 +16,7 @@
 
         <p><strong>Preço:</strong> €@Model.Preco</p>
 
-        <button>Comprar</button>
+        <button class="btn-compra" onclick="abrirModalCompra('@Model.IDProduto', '@Model.Nome', '@Model.Autor', '@Model.Editora', @Model.Preco)">Comprar</button>
 
         <br /><br />
 
@@ -25,3 +25,68 @@
     </div>
 
 </div>
+
+<!-- MODAL DE COMPRA -->
+<div id="modalCompra" class="modal-compra">
+    <div class="modal-content-compra">
+        <!-- Fechar modal -->
+        <span class="fechar-modal" onclick="fecharModalCompra()">&times;</span>
+
+        <div class="modal-header-compra">
+            <h2 id="nomeProdutoModal"></h2>
+        </div>
+
+        <div class="modal-body-compra">
+            <div class="info-produto">
+                <p id="autorModal"></p>
+                <p id="editoraModal"></p>
+                <div class="preco-section">
+                    <span class="preco-label">Preço:</span>
+                    <span id="precoModal" class="preco-value"></span>
+                </div>
+            </div>
+
+            <div class="linguagem-section">
+                <label for="linguagemSelect">Linguagem:</label>
+                <select id="linguagemSelect" class="linguagem-select">
+                    <option value="portugues">Português</option>
+                    <option value="ingles">Inglês</option>
+                    <option value="espanhol">Espanhol</option>
+                    <option value="frances">Francês</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="modal-footer-compra">
+            <button class="btn-compra-modal" onclick="finalizarCompra()">Comprar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function abrirModalCompra(id, nome, autor, editora, preco) {
+        document.getElementById('nomeProdutoModal').textContent = nome;
+        document.getElementById('autorModal').textContent = 'Autor: ' + autor;
+        document.getElementById('editoraModal').textContent = 'Editora: ' + editora;
+        document.getElementById('precoModal').textContent = '€' + preco.toFixed(2);
+        document.getElementById('modalCompra').style.display = 'block';
+    }
+
+    function fecharModalCompra() {
+        document.getElementById('modalCompra').style.display = 'none';
+    }
+
+    function finalizarCompra() {
+        const linguagem = document.getElementById('linguagemSelect').value;
+        alert('Compra realizada! Linguagem: ' + linguagem);
+        fecharModalCompra();
+    }
+
+    // Fechar modal ao clicar fora dele
+    window.onclick = function(event) {
+        const modal = document.getElementById('modalCompra');
+        if (event.target == modal) {
+            fecharModalCompra();
+        }
+    }
+</script>
