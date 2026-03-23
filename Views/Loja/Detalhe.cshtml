@@ -16,6 +16,10 @@
 
         <p><strong>Preço:</strong> €@Model.Preco</p>
 
+        <div class="descricao-box">
+            <p>@Model.Descricao</p>
+        </div>
+
         <button class="btn-compra" onclick="abrirModalCompra('@Model.IDProduto', '@Model.Nome', '@Model.Autor', '@Model.Editora', @Model.Preco)">Comprar</button>
 
         <br /><br />
