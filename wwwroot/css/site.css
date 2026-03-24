@@ -63,6 +63,127 @@ body {
     line-height: 1.6;
 }
 
+.categoria-badge {
+    display: inline-block;
+    background-color: #dc3545;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* BOTÃO CARRINHO INDEX */
+.carrinho-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.btn-carrinho {
+    background-color: white;
+    border: 2px solid #8B4513;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-carrinho-index {
+    height: 28px;
+    width: auto;
+}
+
+.btn-carrinho:hover {
+    background-color: #f5f5f5;
+    border-color: #A0522D;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+.btn-carrinho:active {
+    transform: scale(0.95);
+}
+
+.btn-carrinho-detalhe {
+    background-color: #8B4513;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 6px rgba(139, 69, 19, 0.3);
+    color: white;
+    font-weight: 500;
+}
+
+.btn-carrinho-detalhe:hover {
+    background-color: #A0522D;
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.5);
+}
+
+.btn-carrinho-detalhe:active {
+    transform: scale(0.95);
+}
+
+.botoes-compra {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* BOTÃO CARRINHO TOPO DETALHE */
+.detalhe-wrapper {
+    position: relative;
+}
+
+.carrinho-container-detalhe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.btn-carrinho-topo {
+    background-color: white;
+    border: 2px solid #8B4513;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-carrinho-topo {
+    height: 28px;
+    width: auto;
+}
+
+.btn-carrinho-topo:hover {
+    background-color: #f5f5f5;
+    border-color: #A0522D;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+.btn-carrinho-topo:active {
+    transform: scale(0.95);
+}
+
 .navbar-logo {
     height: 40px;
     width: auto;
