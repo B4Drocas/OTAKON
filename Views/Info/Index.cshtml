@@ -1,145 +1,163 @@
 @{
-    ViewData["Title"] = "Sobre OTAKON";
+    ViewData["Title"] = "Sobre Nós - OTAKON";
 }
 
-<div style="background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%); min-height: 100vh; padding: 0; position: relative; overflow: hidden;">
-    <!-- Animated Background Elements -->
-    <div style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(220,53,69,0.15) 0%, transparent 70%); border-radius: 50%; top: -100px; right: -100px; animation: float 6s ease-in-out infinite;"></div>
-    <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, transparent 70%); border-radius: 50%; bottom: 50px; left: -150px; animation: float 8s ease-in-out infinite;"></div>
+<div style="background-color: var(--bg-primary); min-height: 100vh; padding: 60px 20px;">
+    <div style="max-width: 1000px; margin: 0 auto;">
 
-    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; position: relative; z-index: 2;">
-
-        <!-- Header Section - BRUTAL -->
-        <div style="text-align: center; margin-bottom: 100px;">
-            <div style="display: inline-block; position: relative; margin-bottom: 30px;">
-                <h1 style="font-size: 4.5em; color: #fff; margin: 0; font-weight: 900; letter-spacing: -2px; text-transform: uppercase; text-shadow: 0 10px 30px rgba(220, 53, 69, 0.5);">
-                    OTAKON
-                </h1>
-                <div style="height: 6px; background: linear-gradient(90deg, #dc3545, #ff6b6b, #ffa07a); margin-top: 15px; box-shadow: 0 0 20px rgba(220, 53, 69, 0.6);"></div>
-            </div>
-            <p style="font-size: 1.4em; color: #ff6b6b; margin-top: 20px; font-weight: 600; letter-spacing: 1px;">
-                MANGÁS ÉPICOS. ENTREGA GLOBAL. SEM COMPROMISSOS.
+        <!-- Cabeçalho -->
+        <div style="margin-bottom: 80px; text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 40px;">
+            <h1 data-i18n="sobreOtakon" style="color: var(--text-primary); font-size: 3.5em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -2px;">
+                SOBRE OTAKON
+            </h1>
+            <p data-i18n="comunidadePortuguesa" style="color: var(--text-secondary); font-size: 1.2em; margin: 0; font-weight: 600;">
+                Uma Comunidade Portuguesa Apaixonada por Mangá
             </p>
         </div>
 
-        <!-- Pombal Section - BRUTAL -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 80px; align-items: center;">
-            <div style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(220, 53, 69, 0.5); padding: 50px; backdrop-filter: blur(10px); border-radius: 15px; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, #dc3545, #ff6b6b);"></div>
-                <h2 style="color: #ff6b6b; margin-bottom: 25px; font-size: 2.2em; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">⚡ Nossa Origem</h2>
-                <p style="font-size: 1.15em; line-height: 1.9; color: #e0e0e0; margin-bottom: 15px; font-weight: 500;">
-                    100% PORTUGUESA. 100% REAL. 100% PAIXÃO.
+        <!-- Seção 1: Quem Somos -->
+        <section style="margin-bottom: 80px;">
+            <div style="background-color: rgba(220, 53, 69, 0.08); padding: 50px; border-radius: 8px; border-left: 5px solid var(--accent);">
+                <h2 data-i18n="quemSomos" style="color: var(--text-primary); font-size: 2.2em; font-weight: 900; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                    ⚡ Quem Somos
+                </h2>
+                <p data-i18n="quemSomosTexto1" style="color: var(--text-secondary); font-size: 1.1em; line-height: 1.9; margin: 0 0 20px 0;">
+                    A OTAKON nasceu em Pombal, Portugal, com uma missão simples mas poderosa: trazer os melhores mangás do mundo para leitores portugueses apaixonados por história, arte e cultura.
                 </p>
-                <p style="font-size: 1.1em; line-height: 1.8; color: #b0b0b0;">
-                    Nascida em <strong style="color: #ff6b6b;">Pombal</strong>, Portugal, a OTAKON é mais que uma loja—é um movimento. Aqui, a tradição portuguesa encontra a energia vibrante dos mangás. Cada título que passamos é uma declaração de guerra à qualidade mediocre.
+                <p data-i18n="quemSomosTexto2" style="color: var(--text-secondary); font-size: 1.1em; line-height: 1.9; margin: 0;">
+                    Não somos apenas uma loja. Somos uma comunidade de fãs genuínos que acreditam no poder transformador de um bom mangá. Cada livro que vendemos é uma declaração de qualidade.
                 </p>
             </div>
-            <div style="background: linear-gradient(135deg, #dc3545, #ff6b6b); padding: 50px; border-radius: 15px; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(220, 53, 69, 0.4); transform: perspective(1000px) rotateY(-5deg);">
-                <div style="font-size: 5em; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));">🇵🇹</div>
-                <h3 style="font-size: 2em; margin-bottom: 15px; font-weight: 900; text-transform: uppercase;">POMBAL</h3>
-                <p style="font-size: 1.2em; margin-bottom: 10px; font-weight: 700;">PORTUGAL</p>
-                <p style="font-size: 1em; opacity: 0.95; font-weight: 600;">Onde os heróis nascem</p>
-            </div>
-        </div>
+        </section>
 
-        <!-- Eurodollar Section - BRUTAL -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 80px; align-items: center;">
-            <div style="background: linear-gradient(135deg, #1e90ff, #0052a3); padding: 50px; border-radius: 15px; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(30, 144, 255, 0.3); transform: perspective(1000px) rotateY(5deg);">
-                <div style="font-size: 5em; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));">€</div>
-                <h3 style="font-size: 2em; margin-bottom: 15px; font-weight: 900; text-transform: uppercase;">EURODOLAR</h3>
-                <p style="font-size: 1.2em; margin-bottom: 10px; font-weight: 700;">MOEDA DE REFERÊNCIA</p>
-                <p style="font-size: 1em; opacity: 0.95; font-weight: 600;">Preços nítidos, sem truques</p>
-            </div>
-            <div style="background: rgba(30, 144, 255, 0.1); border: 2px solid rgba(30, 144, 255, 0.5); padding: 50px; backdrop-filter: blur(10px); border-radius: 15px; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; right: 0; width: 5px; height: 100%; background: linear-gradient(180deg, #1e90ff, #0052a3);"></div>
-                <h2 style="color: #1e90ff; margin-bottom: 25px; font-size: 2.2em; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">💎 Transparência Total</h2>
-                <p style="font-size: 1.15em; line-height: 1.9; color: #e0e0e0; margin-bottom: 15px; font-weight: 500;">
-                    ZERO SURPRESAS NO CHECKOUT.
-                </p>
-                <p style="font-size: 1.1em; line-height: 1.8; color: #b0b0b0;">
-                    Trabalhamos exclusivamente em <strong style="color: #1e90ff;">Eurodolar (€)</strong>. Sem conversões escondidas. Sem taxas ocultas. O preço que vê é o preço que paga. Simples. Direto. Brutal.
-                </p>
-            </div>
-        </div>
+        <!-- Seção 2: Nossa Missão -->
+        <section style="margin-bottom: 80px;">
+            <h2 data-i18n="nossaMissao" style="color: var(--text-primary); font-size: 2.2em; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+                💎 Nossa Missão
+            </h2>
 
-        <!-- Global Delivery Section - BRUTAL -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 80px; align-items: center;">
-            <div style="background: rgba(40, 167, 69, 0.1); border: 2px solid rgba(40, 167, 69, 0.5); padding: 50px; backdrop-filter: blur(10px); border-radius: 15px; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, #28a745, #20c997);"></div>
-                <h2 style="color: #20c997; margin-bottom: 25px; font-size: 2.2em; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;">🚀 Sem Fronteiras</h2>
-                <p style="font-size: 1.15em; line-height: 1.9; color: #e0e0e0; margin-bottom: 15px; font-weight: 500;">
-                    ENTREGAMOS EM QUALQUER LUGAR.
-                </p>
-                <p style="font-size: 1.1em; line-height: 1.8; color: #b0b0b0;">
-                    Se você respira, a gente entrega. Não importa se é Lisboa, Tóquio ou Marte—seus mangás chegam em perfeitas condições. Parcerias logísticas confiáveis, rastreamento completo, segurança garantida.
-                </p>
-            </div>
-            <div style="background: linear-gradient(135deg, #28a745, #20c997); padding: 50px; border-radius: 15px; text-align: center; position: relative; box-shadow: 0 20px 60px rgba(40, 167, 69, 0.3); transform: perspective(1000px) rotateY(-5deg);">
-                <div style="font-size: 5em; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));">🌍</div>
-                <h3 style="font-size: 2em; margin-bottom: 15px; font-weight: 900; text-transform: uppercase;">COBERTURA GLOBAL</h3>
-                <p style="font-size: 1.2em; margin-bottom: 10px; font-weight: 700;">PARA TODO O UNIVERSO</p>
-                <p style="font-size: 1em; opacity: 0.95; font-weight: 600;">Rápido. Seguro. Impiedoso.</p>
-            </div>
-        </div>
-
-        <!-- Footer Info - BRUTAL -->
-        <div style="margin-top: 100px; padding-top: 50px; border-top: 2px solid rgba(220, 53, 69, 0.3);">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-                <div style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #ff6b6b; margin-bottom: 15px; font-size: 1.4em; font-weight: 900; text-transform: uppercase;">📍 Base</h3>
-                    <p style="color: #d0d0d0; line-height: 2; font-size: 1.05em; font-weight: 600;">
-                        Pombal<br>
-                        Portugal<br>
-                        Europa
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div style="background-color: rgba(30, 144, 255, 0.08); padding: 40px; border-radius: 8px; border-top: 3px solid #1e90ff;">
+                    <h3 data-i18n="qualidade" style="color: #1e90ff; font-size: 1.3em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase;">Qualidade</h3>
+                    <p data-i18n="qualidadeDesc" style="color: var(--text-secondary); font-size: 1em; line-height: 1.8; margin: 0;">
+                        Cada mangá é selecionado com cuidado. Oferecemos apenas os melhores títulos, com tradução de qualidade e edições originais.
                     </p>
                 </div>
-                <div style="background: rgba(30, 144, 255, 0.1); border-left: 4px solid #1e90ff; padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #1e90ff; margin-bottom: 15px; font-size: 1.4em; font-weight: 900; text-transform: uppercase;">💳 Moeda</h3>
-                    <p style="color: #d0d0d0; line-height: 2; font-size: 1.05em; font-weight: 600;">
-                        Eurodolar (€)<br>
-                        Sem Surpresas<br>
-                        Sem Intermediários
+
+                <div style="background-color: rgba(40, 167, 69, 0.08); padding: 40px; border-radius: 8px; border-top: 3px solid #28a745;">
+                    <h3 data-i18n="transparencia" style="color: #28a745; font-size: 1.3em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase;">Transparência</h3>
+                    <p data-i18n="transparenciaDesc" style="color: var(--text-secondary); font-size: 1em; line-height: 1.8; margin: 0;">
+                        Sem conversões ocultas. Sem taxas surpresa. O preço que você vê é o preço que paga. Simples e honesto.
                     </p>
                 </div>
-                <div style="background: rgba(40, 167, 69, 0.1); border-left: 4px solid #28a745; padding: 30px; border-radius: 10px;">
-                    <h3 style="color: #20c997; margin-bottom: 15px; font-size: 1.4em; font-weight: 900; text-transform: uppercase;">🌐 Alcance</h3>
-                    <p style="color: #d0d0d0; line-height: 2; font-size: 1.05em; font-weight: 600;">
-                        Cobertura Mundial<br>
-                        Rastreamento Completo<br>
-                        Garantia Brutal
+
+                <div style="background-color: rgba(220, 53, 69, 0.08); padding: 40px; border-radius: 8px; border-top: 3px solid var(--accent);">
+                    <h3 data-i18n="comunidade" style="color: var(--accent); font-size: 1.3em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase;">Comunidade</h3>
+                    <p data-i18n="comunidadeDesc" style="color: var(--text-secondary); font-size: 1em; line-height: 1.8; margin: 0;">
+                        Você faz parte de algo maior. Conheça outros leitores, compartilhe recomendações e descubra novos mangás.
+                    </p>
+                </div>
+
+                <div style="background-color: rgba(255, 193, 7, 0.08); padding: 40px; border-radius: 8px; border-top: 3px solid #ffc107;">
+                    <h3 data-i18n="entregaGlobal" style="color: #ffc107; font-size: 1.3em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase;">Entrega Global</h3>
+                    <p data-i18n="entregaGlobalDesc" style="color: var(--text-secondary); font-size: 1em; line-height: 1.8; margin: 0;">
+                        Portugal, Europa, Mundo. Seus mangás chegam em perfeitas condições, com rastreamento e garantia total.
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Seção 3: Por Que Escolher OTAKON -->
+        <section style="margin-bottom: 80px;">
+            <h2 data-i18n="porQueEscolher" style="color: var(--text-primary); font-size: 2.2em; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+                🎯 Por Que Escolher OTAKON
+            </h2>
+
+            <div style="background-color: var(--bg-secondary); padding: 50px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="raizesPortuguesas">Raízes Portuguesas - Pombal é nossa casa, e o português é nosso idioma</span>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="catalogoVasto">Catálogo Vasto - Clássicos, novidades, rarezas - sempre em stock</span>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="atendimentoPessoal">Atendimento Pessoal - Faça perguntas, peça recomendações, somos acessíveis</span>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="precosJustos">Preços Justos - Competitivos e honestos, sem surpresas</span>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="entregaRapida">Entrega Rápida - Embalagem segura, rastreamento completo</span>
+                    </li>
+                    <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 40px; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900; font-size: 1.2em;">✓</span>
+                        <span data-i18n="comunidadeAtiva">Comunidade Ativa - Participe de discussões e eventos</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção 4: Nossos Valores -->
+        <section style="margin-bottom: 80px;">
+            <h2 data-i18n="nossosValores" style="color: var(--text-primary); font-size: 2.2em; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+                🛡️ Nossos Valores
+            </h2>
+
+            <div style="background-color: rgba(220, 53, 69, 0.08); padding: 50px; border-radius: 8px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;">
+                    <div style="text-align: center;">
+                        <h3 style="color: var(--accent); font-size: 3em; margin: 0 0 15px 0;">🎖️</h3>
+                        <h4 data-i18n="integridade" style="color: var(--text-primary); font-size: 1.1em; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">Integridade</h4>
+                        <p data-i18n="integridadeDesc" style="color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin: 0;">Agir com honestidade em cada transação</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h3 style="color: var(--accent); font-size: 3em; margin: 0 0 15px 0;">🔥</h3>
+                        <h4 data-i18n="paixao" style="color: var(--text-primary); font-size: 1.1em; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">Paixão</h4>
+                        <p data-i18n="paixaoDesc" style="color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin: 0;">Amar o que fazemos genuinamente</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h3 style="color: var(--accent); font-size: 3em; margin: 0 0 15px 0;">🌍</h3>
+                        <h4 data-i18n="inclusao" style="color: var(--text-primary); font-size: 1.1em; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">Inclusão</h4>
+                        <p data-i18n="inclusaoDesc" style="color: var(--text-secondary); font-size: 0.95em; line-height: 1.6; margin: 0;">Servir a comunidade sem limites</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: CTA Final -->
+        <section style="background: linear-gradient(135deg, rgba(220,53,69,0.15) 0%, rgba(30,144,255,0.15) 100%); padding: 60px; border-radius: 8px; text-align: center; border: 2px solid var(--accent);">
+            <h2 data-i18n="prontoDescobrir" style="color: var(--text-primary); font-size: 2em; font-weight: 900; margin: 0 0 20px 0; text-transform: uppercase;">
+                Pronto para Descobrir Novos Mangás?
+            </h2>
+            <p data-i18n="prontoDescubrirDesc" style="color: var(--text-secondary); font-size: 1.1em; margin: 0 0 30px 0;">
+                Junte-se à comunidade OTAKON e explore um mundo de histórias épicas
+            </p>
+            <a href="/Account/Register" data-i18n="comecaAgora" style="background: var(--accent); color: white; padding: 16px 50px; text-decoration: none; font-weight: 900; font-size: 1em; display: inline-block; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
+                Começar Agora
+            </a>
+        </section>
+
     </div>
 </div>
 
-
 <style>
-    @@keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(20px);
-        }
-    }
-
     @@media (max-width: 768px) {
-        h1 {
-            font-size: 2.5em !important;
-        }
-
         h2 {
-            font-size: 1.6em !important;
+            font-size: 1.8em !important;
         }
 
         div[style*="grid-template-columns: 1fr 1fr"] {
             grid-template-columns: 1fr !important;
         }
 
-        div[style*="transform: perspective"] {
-            transform: none !important;
+        div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
         }
     }
 </style>
