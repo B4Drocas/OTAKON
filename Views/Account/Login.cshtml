@@ -1,0 +1,102 @@
+@{
+    ViewData["Title"] = "Login - OTAKON";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/otakon-brutal.css" asp-append-version="true" />
+    <script src="~/js/language.js" asp-append-version="true"></script>
+</head>
+<body class="otakon-theme" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;">
+    <!-- Efeito de ruído -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 1px, transparent 1px, transparent 2px); pointer-events: none; z-index: -1;"></div>
+
+    <div style="width: 100%; max-width: 500px; position: relative; z-index: 2;">
+        <div style="background: var(--bg-secondary); border: 2px solid var(--accent); overflow: hidden; animation: slideUp 0.5s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); position: relative; border-radius: 8px;">
+            <div style="height: 2px; background: var(--accent);"></div>
+
+            <div style="padding: 50px 30px; text-align: center; color: var(--text-primary); border-bottom: 2px solid var(--border-color);">
+                <img src="~/images/OTAKON - Cópia.png" alt="OTAKON Logo" style="max-width: 150px; height: auto; margin-bottom: 20px;" />
+                <h2 data-i18n="login" style="margin: 0; font-weight: 900; font-size: 2.5em; color: var(--text-primary); text-transform: uppercase; letter-spacing: -1px;">
+                    LOGIN
+                </h2>
+                <p style="margin: 15px 0 0 0; color: var(--text-tertiary); font-size: 0.95em; font-weight: 600; letter-spacing: 0.5px;">
+                    BEM-VINDO DE VOLTA À COMUNIDADE OTAKON
+                </p>
+            </div>
+
+            <!-- Language Selector -->
+            <div style="padding: 10px 30px; text-align: right; background: rgba(220, 53, 69, 0.05); border-bottom: 1px solid var(--border-color);">
+                <div class="otakon-language-selector" style="display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin: 0;">
+                    <button class="otakon-lang-btn" onclick="setLanguage('pt')" id="langPt" title="Português" style="background: none; border: none; color: var(--text-primary); font-weight: 900; font-size: 0.8em; text-transform: uppercase; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">PT</button>
+                    <span style="color: var(--border-color); font-weight: 300;">|</span>
+                    <button class="otakon-lang-btn" onclick="setLanguage('en')" id="langEn" title="English" style="background: none; border: none; color: var(--text-primary); font-weight: 900; font-size: 0.8em; text-transform: uppercase; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">EN</button>
+                </div>
+            </div>
+
+            <div style="padding: 40px 30px;">
+                @if (ViewData["ErrorMessage"] != null)
+                {
+                    <div style="background-color: rgba(220, 53, 69, 0.2); color: var(--text-primary); padding: 15px; border-radius: 6px; margin-bottom: 25px; border-left: 5px solid var(--accent); font-size: 0.95em; font-weight: 600; border: 2px solid var(--accent);">
+                        ⚠️ @ViewData["ErrorMessage"]
+                    </div>
+                }
+
+                <form method="post" action="/Account/Login">
+                    <div style="margin-bottom: 25px;">
+                        <label for="username" data-i18n="usuarioOuEmail" style="font-weight: 900; color: var(--text-primary); margin-bottom: 12px; display: block; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Usuário ou Email
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" 
+                               data-i18n-attr="placeholder" data-i18n-key="usuarioOuEmailPlaceholder" placeholder="Digite seu usuário ou email" required autofocus />
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label for="password" data-i18n="senha" style="font-weight: 900; color: var(--text-primary); margin-bottom: 12px; display: block; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px;">
+                            Senha
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" 
+                               data-i18n-attr="placeholder" data-i18n-key="senhaPlaceholder2" placeholder="Digite sua senha" required />
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <input class="form-check-input" type="checkbox" id="remember" name="remember" style="cursor: pointer; accent-color: var(--accent);" />
+                        <label class="form-check-label" for="remember" style="color: var(--text-secondary); font-size: 0.95em; cursor: pointer; user-select: none; margin-left: 10px; font-weight: 600;">
+                            Lembrar-me neste dispositivo
+                        </label>
+                    </div>
+
+                    <div style="text-align: right; margin-bottom: 30px;">
+                        <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.9em; font-weight: 900; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;">Esqueceu a Senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100 otakon-btn" data-i18n="entrar" style="padding: 15px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+                        ENTRAR AGORA
+                    </button>
+
+                    <div style="text-align: center; padding-top: 25px; border-top: 2px solid var(--border-color); color: var(--text-tertiary); font-size: 0.95em; font-weight: 600;">
+                        <span data-i18n="naoConta">Não tem conta?</span>
+                        <a href="/Account/Register" data-i18n="criarAgora" style="color: var(--accent); text-decoration: none; font-weight: 900; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;">Criar Agora</a>
+                    </div>
+                </form>
+            </div>
+
+            <div style="padding: 20px 30px; text-align: center; border-top: 2px solid var(--border-color);">
+                <button id="theme-toggle" class="btn btn-outline-danger btn-sm otakon-btn" style="border-width: 2px; text-transform: uppercase; letter-spacing: 1px;">
+                    <span id="theme-icon">🌙</span> <span data-i18n="tema">Tema</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/theme-toggle.js" asp-append-version="true"></script>
+</body>
+</html>

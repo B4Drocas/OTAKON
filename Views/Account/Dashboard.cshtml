@@ -1,0 +1,136 @@
+@{
+    ViewData["Title"] = "Dashboard - OTAKON";
+}
+
+<div style="background: var(--bg-primary); min-height: 100vh; padding: 60px 20px; color: var(--text-primary);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+
+        <!-- Welcome Section -->
+        <div style="margin-bottom: 80px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h1 style="font-size: 3em; font-weight: 900; margin: 0 0 15px 0; color: var(--text-primary); text-transform: uppercase; letter-spacing: -1px; text-shadow: 0 0 20px rgba(220, 53, 69, 0.2);">
+                        BEM-VINDO(A)!
+                    </h1>
+                    <p style="font-size: 1.3em; color: var(--accent); font-weight: 900; margin: 0; text-shadow: 0 0 10px rgba(220, 53, 69, 0.3);">
+                        @(User?.Identity?.Name ?? "Usuário")
+                    </p>
+                    <div style="height: 4px; width: 300px; background: linear-gradient(90deg, var(--accent), transparent); margin-top: 15px; box-shadow: 0 0 15px rgba(220, 53, 69, 0.3);"></div>
+                    <p style="font-size: 1.1em; color: var(--text-secondary); margin-top: 20px; line-height: 1.8; font-weight: 600;">
+                        Você está logado no sistema OTAKON. Explore a loja, veja seus favoritos, gerencie suas preferências e muito mais!
+                    </p>
+                </div>
+                <a href="/Account/Logout" style="background: linear-gradient(135deg, var(--accent), #c82333); color: white; padding: 15px 40px; border-radius: 0; text-decoration: none; font-weight: 900; font-size: 1em; white-space: nowrap; box-shadow: 0 0 25px rgba(220, 53, 69, 0.4); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; display: inline-block;">
+                    🚪 Sair
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Cards Section -->
+        <div style="margin-bottom: 80px;">
+            <h2 style="font-size: 2em; font-weight: 900; margin-bottom: 40px; color: var(--text-primary); text-transform: uppercase; letter-spacing: -1px;">
+                Explore
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Card 1: Loja -->
+                <div style="background: var(--bg-secondary); border: 3px solid var(--otakon-blue); padding: 40px; border-radius: 0; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--otakon-blue), var(--otakon-blue-dark)); box-shadow: 0 0 20px var(--otakon-blue);"></div>
+
+                    <div style="font-size: 4em; margin-bottom: 20px;">🛒</div>
+                    <h3 style="font-size: 1.8em; font-weight: 900; color: var(--text-primary); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px;">
+                        Loja de Mangás
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 25px; font-weight: 600;">
+                        Descubra os melhores mangás da comunidade OTAKON. Novos títulos adicionados diariamente!
+                    </p>
+                    <a href="/Store" style="background: linear-gradient(135deg, var(--otakon-blue), var(--otakon-blue-dark)); color: white; padding: 14px 30px; border-radius: 0; text-decoration: none; font-weight: 900; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(30, 144, 255, 0.3); text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">
+                        Explorar Loja →
+                    </a>
+                </div>
+
+                <!-- Card 2: Favoritos -->
+                <div style="background: var(--bg-secondary); border: 3px solid #764ba2; padding: 40px; border-radius: 0; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 0 30px rgba(118, 75, 162, 0.2);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #764ba2, #9d5ddc); box-shadow: 0 0 20px #764ba2;"></div>
+
+                    <div style="font-size: 4em; margin-bottom: 20px;">❤️</div>
+                    <h3 style="font-size: 1.8em; font-weight: 900; color: var(--text-primary); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px;">
+                        Meus Favoritos
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 25px; font-weight: 600;">
+                        Acompanhe todos os mangás que você marcou como favoritos. Acesso rápido aos seus preferidos!
+                    </p>
+                    <a href="#" style="background: linear-gradient(135deg, #764ba2, #9d5ddc); color: white; padding: 14px 30px; border-radius: 0; text-decoration: none; font-weight: 900; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(118, 75, 162, 0.3); text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">
+                        Ver Favoritos →
+                    </a>
+                </div>
+
+                <!-- Card 3: Configurações -->
+                <div style="background: var(--bg-secondary); border: 3px solid var(--accent); padding: 40px; border-radius: 0; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 0 30px rgba(220, 53, 69, 0.2);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--otakon-red-light)); box-shadow: 0 0 20px var(--accent);"></div>
+
+                    <div style="font-size: 4em; margin-bottom: 20px;">⚙️</div>
+                    <h3 style="font-size: 1.8em; font-weight: 900; color: var(--text-primary); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px;">
+                        Configurações
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 25px; font-weight: 600;">
+                        Gerencie suas preferências, perfil, notificações e muito mais. Customize sua experiência!
+                    </p>
+                    <a href="#" style="background: linear-gradient(135deg, var(--accent), #c82333); color: white; padding: 14px 30px; border-radius: 0; text-decoration: none; font-weight: 900; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(220, 53, 69, 0.3); text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">
+                        Configurar →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Section -->
+        <div style="margin-bottom: 80px; padding: 40px; background: var(--bg-secondary); border: 2px solid var(--border-color); border-top: 4px solid var(--accent);">
+            <h3 style="font-size: 1.5em; font-weight: 900; margin-bottom: 30px; color: var(--text-primary); text-transform: uppercase; letter-spacing: -1px;">
+                Seus Dados
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: 900; color: var(--accent); text-shadow: 0 0 15px rgba(220, 53, 69, 0.3);">
+                        0
+                    </div>
+                    <p style="color: var(--text-tertiary); font-weight: 600; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
+                        Mangás na Coleção
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: 900; color: var(--otakon-blue); text-shadow: 0 0 15px rgba(30, 144, 255, 0.3);">
+                        0
+                    </div>
+                    <p style="color: var(--text-tertiary); font-weight: 600; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
+                        Favoritos
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5em; font-weight: 900; color: #764ba2; text-shadow: 0 0 15px rgba(118, 75, 162, 0.3);">
+                        0
+                    </div>
+                    <p style="color: var(--text-tertiary); font-weight: 600; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;">
+                        Encomendas
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    a:hover {
+        transform: translateY(-3px);
+    }
+
+    @@media (max-width: 768px) {
+        h1 {
+            font-size: 2em !important;
+        }
+
+        div[style*="grid-template-columns"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>

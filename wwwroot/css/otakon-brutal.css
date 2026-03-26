@@ -1,0 +1,236 @@
+/* ================== COMPONENTES OTAKON ================== */
+
+/* HERO SECTION */
+.otakon-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.otakon-hero-content {
+  text-align: center;
+  max-width: 1000px;
+  animation: fadeInUp 0.8s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.otakon-hero h1 {
+  font-size: 4em;
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.otakon-hero .subtitle {
+  font-size: 1.8em;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* CARDS */
+.otakon-card {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 40px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.otakon-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* BOTÕES */
+.otakon-button {
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, var(--accent), #c82333);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.otakon-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+}
+
+.otakon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: #fff;
+}
+
+.otakon-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* SECÇÕES */
+.otakon-section {
+  margin-bottom: 100px;
+  padding: 50px;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.otakon-section h2 {
+  color: var(--accent);
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.otakon-section p {
+  font-size: 1.1em;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+/* GRID */
+.otakon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .otakon-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* BADGES */
+.otakon-badge {
+  display: inline-block;
+  padding: 8px 15px;
+  background: linear-gradient(135deg, var(--accent), #c82333);
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85em;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* LINHAS DECORATIVAS */
+.otakon-line {
+  height: 2px;
+  background: var(--accent);
+  margin: 30px 0;
+  border-radius: 1px;
+}
+
+.otakon-line-full {
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+}
+
+/* CAIXAS DE DESTAQUE */
+.otakon-highlight {
+  padding: 30px;
+  border-left: 4px solid var(--accent);
+  background-color: var(--card-bg);
+  margin: 20px 0;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.otakon-highlight:hover {
+  border-left-width: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* TEXTO DESTAQUE */
+.otakon-glow {
+  color: var(--accent);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ÍCONES */
+.otakon-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+/* ANIMAÇÕES */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .otakon-hero {
+    padding: 60px 20px;
+  }
+
+  .otakon-hero h1 {
+    font-size: 2em;
+  }
+
+  .otakon-hero .subtitle {
+    font-size: 1.2em;
+  }
+
+  .otakon-button {
+    padding: 12px 30px;
+    font-size: 0.9em;
+  }
+
+  .otakon-section {
+    padding: 30px 20px;
+  }
+}

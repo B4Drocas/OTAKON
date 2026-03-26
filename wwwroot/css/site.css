@@ -1,31 +1,922 @@
-html {
-  font-size: 14px;
+/* ================== CORES OTAKON ================== */
+:root {
+  --otakon-red: #dc3545;
+  --otakon-red-light: #ff6b6b;
+  --otakon-blue: #1e90ff;
+  --otakon-blue-dark: #0052a3;
+  --otakon-green: #28a745;
+  --otakon-green-light: #20c997;
+  --otakon-yellow: #ffc107;
+  --shadow-sm: 0 2px 8px rgba(220, 53, 69, 0.1);
+  --shadow-md: 0 4px 16px rgba(220, 53, 69, 0.15);
+  --shadow-lg: 0 8px 32px rgba(220, 53, 69, 0.2);
+  --shadow-xl: 0 12px 48px rgba(220, 53, 69, 0.25);
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+/* ================== TEMA ESCURO (PADRÃO) ================== */
+html[data-theme="dark"],
+html:not([data-theme]) {
+  --bg-primary: #0a0e27;
+  --bg-secondary: #0f1329;
+  --bg-tertiary: #151b35;
+  --text-primary: #e8edf9;
+  --text-secondary: #b4bcc9;
+  --text-tertiary: #8a92a8;
+  --border-color: #1f2540;
+  --navbar-bg: #0a0e27;
+  --footer-bg: #0a0e27;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --accent: #dc3545;
+  --gradient-accent: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+}
+
+/* ================== TEMA CLARO ================== */
+html[data-theme="light"] {
+  --bg-primary: #f8f9fb;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f4f9;
+  --text-primary: #1a1f3a;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border-color: #e2e8f0;
+  --navbar-bg: #ffffff;
+  --footer-bg: #f8f9fb;
+  --card-bg: rgba(0, 0, 0, 0.02);
+  --accent: #dc3545;
+  --gradient-accent: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+}
+
+/* ================== RESET & BASE ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+/* ================== SCROLLBAR ESTILIZADA ================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #dc3545 0%, #ff6b6b 100%);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6b6b 0%, #dc3545 100%);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+body.otakon-theme {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Efeito de ruído sutil */
+body.otakon-theme::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.005), rgba(255,255,255,.005) 1px, transparent 1px, transparent 2px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ================== NAVBAR ================== */
+.otakon-navbar {
+  background: var(--gradient-accent);
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.95) 0%, rgba(255, 107, 107, 0.85) 100%);
+  backdrop-filter: blur(10px);
+  background-color: var(--navbar-bg);
+  border-bottom: 2px solid var(--accent);
+  padding: 12px 0;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+html[data-theme="light"] .otakon-navbar {
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.05) 0%, rgba(255, 107, 107, 0.02) 100%);
+  background-color: var(--navbar-bg);
+}
+
+.otakon-navbar .navbar-brand img {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(220, 53, 69, 0.2));
+}
+
+.otakon-navbar .navbar-brand img:hover {
+  transform: scale(1.12) rotate(2deg);
+  filter: drop-shadow(0 4px 12px rgba(220, 53, 69, 0.4));
+}
+
+.otakon-navbar .nav-link {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-primary) !important;
+  font-size: 0.85em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 8px 16px !important;
+}
+
+.otakon-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 50%;
+  background: var(--gradient-accent);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
+}
+
+.otakon-navbar .nav-link:hover::after,
+.otakon-navbar .nav-link:focus::after {
+  width: 100%;
+}
+
+.otakon-navbar .nav-link:hover,
+.otakon-navbar .nav-link:focus {
+  color: white !important;
+}
+
+/* ================== MENU CUSTOM ================== */
+.otakon-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: 2px solid var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.otakon-menu-toggle:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+}
+
+.otakon-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.otakon-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+  background-color: var(--accent);
+}
+
+.otakon-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.otakon-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+  background-color: var(--accent);
+}
+
+.otakon-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 998;
+  backdrop-filter: blur(4px);
+}
+
+.otakon-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.otakon-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.25);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+  border-left: 2px solid var(--accent);
+}
+
+.otakon-menu.active {
+  right: 0;
+}
+
+.otakon-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.otakon-menu-item {
+  padding: 15px 20px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid transparent;
+  display: block;
+  letter-spacing: 0.5px;
+}
+
+.otakon-menu-item:hover {
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 100%);
+  border-left-color: var(--accent);
+  padding-left: 28px;
+  color: var(--accent);
+  box-shadow: inset 0 0 10px rgba(220, 53, 69, 0.1);
+}
+
+.otakon-menu-login {
+  background: var(--gradient-accent);
+  color: white;
+  margin: 15px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.otakon-menu-login:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.otakon-submenu {
+  display: none;
+  flex-direction: column;
+  background-color: rgba(220, 53, 69, 0.08);
+}
+
+.otakon-submenu.active {
+  display: flex;
+}
+
+.otakon-submenu .otakon-menu-item {
+  padding-left: 40px;
+  font-size: 0.8em;
+}
+
+/* ================== SELETOR DE IDIOMA ================== */
+.otakon-language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.otakon-language-btn {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.otakon-language-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--gradient-accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: -1;
+}
+
+.otakon-language-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.otakon-language-btn:hover {
+  color: white;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.otakon-language-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  min-width: 200px;
+  box-shadow: var(--shadow-xl);
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.otakon-language-dropdown.active .otakon-language-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.otakon-language-option {
+  padding: 14px 20px;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid transparent;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.otakon-language-option::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: width 0.3s ease;
+}
+
+.otakon-language-option:hover::before {
+  width: 100%;
+}
+
+.otakon-language-option:hover {
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.1) 0%, rgba(220, 53, 69, 0.05) 100%);
+  border-left-color: var(--accent);
+  padding-left: 24px;
+  color: var(--accent);
+}
+
+.otakon-language-option.active {
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.2) 0%, rgba(220, 53, 69, 0.1) 100%);
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 700;
+}
+
+/* Antigas classes (manter compatibilidade) */
+.otakon-language-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+}
+
+.otakon-lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 900;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.otakon-lang-btn:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: var(--accent);
+}
+
+.otakon-lang-btn.active {
+  background-color: var(--accent);
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.otakon-lang-separator {
+  color: var(--border-color);
+  font-weight: 300;
+}
+
+/* ================== BOTÕES ================== */
+.otakon-btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-width: 2px !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.otakon-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.otakon-btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+.otakon-btn:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.btn-danger {
+  background: var(--gradient-accent) !important;
+  border-color: var(--accent) !important;
+}
+
+#theme-toggle {
+  font-size: 1.1em;
+  border-width: 2px !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#theme-toggle:hover {
+  box-shadow: var(--shadow-md);
+  transform: scale(1.08) rotate(5deg);
+}
+
+/* ================== CONTAINER ================== */
+.otakon-container {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 40px 20px;
+  transition: all 0.3s ease;
+}
+
+/* ================== TIPOGRAFIA ================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 3.5em;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 2.5em;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: 1.8em;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1.05em;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+p:hover {
+  color: var(--text-primary);
+}
+
+/* ================== LINKS ================== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ================== FOOTER ================== */
+.otakon-footer {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  color: var(--text-secondary);
+  padding: 40px 0;
+  border-top: 2px solid var(--accent);
+  margin-top: 80px;
+  text-align: center;
+  font-size: 0.95em;
+  box-shadow: 0 -4px 16px rgba(220, 53, 69, 0.1);
+  transition: all 0.3s ease;
+}
+
+.otakon-footer a {
+  color: var(--accent);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.otakon-footer a:hover {
+  opacity: 0.8;
+}
+
+.otakon-footer p {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ================== CARTÕES ================== */
+.card {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(220, 53, 69, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* ================== FORMULÁRIOS ================== */
+.form-control, .form-select {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 1em;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+.form-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+.form-check-input {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.3s ease;
+}
+
+.form-check-input:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.2);
+}
+
+.form-check-input:checked {
+  background: var(--gradient-accent);
+  border-color: var(--accent);
+}
+
+/* ================== ANIMAÇÕES ================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-body {
-  margin-bottom: 60px;
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(220, 53, 69, 0.6);
+  }
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.slideInLeft {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slideInRight {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* ================== BOTÃO SCROLL TO TOP ================== */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  background: var(--gradient-accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 90;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-lg);
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollToTopBtn.show {
+  display: flex;
+  animation: floatUp 0.6s ease;
+}
+
+#scrollToTopBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  animation: pulse-glow 2s infinite;
+}
+
+/* ================== RESPONSIVIDADE ================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  .otakon-navbar .nav-link {
+    font-size: 0.75em;
+    padding: 6px 10px !important;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+
+  .card {
+    border-radius: 10px;
+  }
+
+  #scrollToTopBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+
+  .form-control, .form-select {
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+}
+
+/* ================== UTILIDADES ================== */
+.text-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.border-accent {
+  border-color: var(--accent) !important;
+}
+
+.bg-accent {
+  background: var(--gradient-accent);
+  color: #fff;
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+/* Suavidade geral */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
