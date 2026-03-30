@@ -20,4 +20,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers - Cópia\" />
+    <Folder Include="Models - Cópia\" />
+  </ItemGroup>
+
 </Project>

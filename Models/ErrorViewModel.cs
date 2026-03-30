@@ -1,4 +1,4 @@
-namespace OTAKON.Models
+namespace OTAKode.Models
 {
     public class ErrorViewModel
     {

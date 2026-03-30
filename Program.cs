@@ -1,6 +1,7 @@
 using OTAKON.Data;
 using OTAKode.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,16 @@ builder.Services.AddControllersWithViews();
 // Add Entity Framework Core
 builder.Services.AddDbContext<OtakonDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add Authentication with Cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.SlidingExpiration = true;
+    });
 
 // Add Session
 builder.Services.AddSession(options =>
@@ -54,6 +65,9 @@ app.MapControllerRoute(
 app.Run();
 app.UseStaticFiles();
 app.UseRouting();
+
+// Add Authentication middleware
+app.UseAuthentication();
 
 // Add Session middleware
 app.UseSession();
