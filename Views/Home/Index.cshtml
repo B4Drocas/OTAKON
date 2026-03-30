@@ -99,3 +99,110 @@
         </a>
     </div>
 </section>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<section class="otakon-hero">
+    <div class="otakon-hero-content">
+        <!-- Logo com animação -->
+        <div class="otakon-hero-logo">
+            <img src="~/images/OTAKON - Cópia.png" alt="OTAKON Logo" />
+        </div>
+
+        <!-- Título Principal -->
+        <h1 class="otakon-hero-title" data-i18n="bemvindo">BEM-VINDO(A)</h1>
+
+        <!-- Divisor Decorativo -->
+        <div class="otakon-hero-divider">
+            <div class="otakon-hero-line"></div>
+            <span class="otakon-hero-icon">📖</span>
+            <div class="otakon-hero-line"></div>
+        </div>
+
+        <!-- Subtítulo -->
+        <p class="otakon-hero-subtitle">
+            <span data-i18n="subtitulo">À plataforma</span>
+            <strong class="otakon-glow" data-i18n="otakonTitle">OTAKON</strong>
+        </p>
+
+        <!-- Descrição -->
+        <p class="otakon-hero-description" data-i18n="descricao">
+            Sua comunidade de anime, mangá e cultura geek brutal
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="otakon-hero-actions">
+            <a href="/Account/Login" class="otakon-button" data-i18n="fazerLogin">
+                Fazer Login →
+            </a>
+            <a href="/Account/Register" class="otakon-button otakon-button-secondary" data-i18n="criarConta">
+                Criar Conta
+            </a>
+        </div>
+
+        <!-- Footer Hero -->
+        <div class="otakon-hero-footer">
+            <p data-i18n="saibaMais">Saiba mais sobre</p>
+            <a href="https://learn.microsoft.com/aspnet/core" target="_blank">
+                building Web apps with ASP.NET Core
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Garoto Propaganda Section -->
+<section class="otakon-section ambassador-section">
+    <div class="container">
+        <div class="ambassador-content">
+            <!-- Imagem -->
+            <div class="ambassador-image">
+                <div class="ambassador-image-wrapper">
+                    <img src="~/images/gajo.jpg" alt="Garoto Propaganda OTAKON" />
+                </div>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="ambassador-text">
+                <span class="otakon-badge" data-i18n="nossoRosto">⭐ Nosso Rosto</span>
+
+                <h2 data-i18n="conhecaNosso">
+                    Conheça nosso<br />
+                    <span class="otakon-glow" data-i18n="garotoPropaganda">Garoto Propaganda Thundercat</span>
+                </h2>
+
+                <p class="ambassador-quote" data-i18n="garotoPropagandaQuote">
+                    "Isso é jazz cósmico"
+                </p>
+
+                <p class="ambassador-description" data-i18n="garotoPropagandaDesc">
+                    O rosto da comunidade OTAKON. Um verdadeiro fã de anime, mangá e cultura geek. Símbolo da brutalidade e paixão que define tudo que fazemos.
+                </p>
+
+                <div class="ambassador-actions">
+                    <a href="/Account/Register" class="otakon-button" data-i18n="criarContaBtn">
+                        Criar Conta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Final -->
+<section class="otakon-section cta-section">
+    <div class="container text-center">
+        <h2 class="cta-title" data-i18n="prontoParaComunidade">
+            Pronto para a Comunidade?
+        </h2>
+
+        <p class="cta-description" data-i18n="mensagemComunidade">
+            Faça parte do movimento OTAKON. Leia, compartilhe e descubra histórias épicas de mangá.
+        </p>
+
+        <a href="/Account/Register" class="otakon-button" data-i18n="entrarAgora">
+            Entrar Agora
+        </a>
+    </div>
+</section>

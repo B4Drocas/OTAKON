@@ -63,7 +63,7 @@ app.MapStaticAssets();
 // 🧭 ROTAS
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Loja}/{action=Index}/{id?}") // 👈 Loja como página inicial
+    pattern: "{controller=Home}/{action=Index}/{id?}") // 👈 Home como página inicial
     .WithStaticAssets();
 
 app.Run();
