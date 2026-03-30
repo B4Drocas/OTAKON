@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+<html lang="pt" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,6 +38,72 @@
         </nav>
     </header>
     <div class="container">
+    <link rel="stylesheet" href="~/css/otakon-brutal.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OTAKON.styles.css" asp-append-version="true" />
+    <script src="~/js/language.js" asp-append-version="true"></script>
+</head>
+<body class="otakon-theme">
+    <header>
+        <nav class="navbar border-bottom otakon-navbar">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/OTAKON - Cópia.png" alt="OTAKON Logo" style="height: 40px;" />
+                </a>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <!-- Dropdown de Idioma -->
+                    <div class="otakon-language-dropdown">
+                        <button class="otakon-language-btn" onclick="toggleLanguageDropdown()">
+                            🌐 <span data-i18n="idioma">Idioma</span>
+                        </button>
+                        <div class="otakon-language-dropdown-menu">
+                            <a href="javascript:void(0)" class="otakon-language-option" data-lang="pt" onclick="setLanguage('pt')">
+                                🇵🇹 <span data-i18n="portugues">Português</span>
+                            </a>
+                            <a href="javascript:void(0)" class="otakon-language-option" data-lang="en" onclick="setLanguage('en')">
+                                🇬🇧 <span data-i18n="ingles">English</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <button class="otakon-menu-toggle" id="menuToggle" onclick="toggleOtakonMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Menu Custom -->
+        <div class="otakon-menu" id="otakonMenu">
+            <div class="otakon-menu-content">
+                <a href="/" class="otakon-menu-item" data-i18n="home" onclick="closeOtakonMenu()">HOME</a>
+                <a href="/Info/Index" class="otakon-menu-item" data-i18n="sobre" onclick="closeOtakonMenu()">SOBRE</a>
+                <a href="/Home/Privacy" class="otakon-menu-item" data-i18n="privacidade" onclick="closeOtakonMenu()">PRIVACIDADE</a>
+
+                <div style="border-top: 1px solid var(--border-color); margin: 15px 0;"></div>
+
+                @if (Context.Session.GetInt32("UserId") == null)
+                {
+                    <a href="/Account/Login" class="otakon-menu-item otakon-menu-login" data-i18n="login" onclick="closeOtakonMenu()">LOGIN</a>
+                }
+                else
+                {
+                    <a href="#" class="otakon-menu-item" onclick="toggleUserMenu(event)">👤 @Context.Session.GetString("Username")</a>
+                    <div class="otakon-submenu" id="userSubmenu">
+                        <a href="/Account/Dashboard" class="otakon-menu-item" data-i18n="carrinho" onclick="closeOtakonMenu()">🛒 Carrinho</a>
+                        <a href="/Account/Favorites" class="otakon-menu-item" data-i18n="favorito" onclick="closeOtakonMenu()">⭐ Favorito</a>
+                        <a href="/Account/Settings" class="otakon-menu-item" data-i18n="configuracoes" onclick="closeOtakonMenu()">⚙️ Configurações</a>
+                        <a href="/Account/Logout" class="otakon-menu-item" data-i18n="logout" onclick="closeOtakonMenu()">Sair</a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="otakon-menu-overlay" id="menuOverlay" onclick="closeOtakonMenu()"></div>
+    </header>
+    <div class="otakon-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -45,11 +112,15 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2026 - OTAKON - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top otakon-footer">
+        <div class="container">
+            <p><span data-i18n="copyright">&copy; 2026 - OTAKON -</span> <a asp-area="" asp-controller="Home" asp-action="Privacy" data-i18n="privacidade">Privacidade</a></p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/theme-toggle.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

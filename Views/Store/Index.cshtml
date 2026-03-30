@@ -1,0 +1,107 @@
+@model List<OTAKode.Models.Manga>
+
+@{
+    ViewData["Title"] = "Loja - OTAKON";
+}
+
+<div style="background: white; min-height: 100vh;">
+    <!-- Header da Loja -->
+    <section style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 60px 20px; color: white; text-align: center;">
+        <div class="container" style="max-width: 1200px;">
+            <h1 style="font-size: 40px; font-weight: 700; margin-bottom: 20px;">📚 Loja OTAKON</h1>
+            <p style="font-size: 18px; color: #ccc; margin-bottom: 30px;">Descubra os melhores mangás da comunidade</p>
+            
+            <!-- Search Bar -->
+            <form method="get" action="/Store/Search" style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto;">
+                <input type="text" name="query" placeholder="Buscar mangás, autores, gêneros..." 
+                       style="flex: 1; padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px;" />
+                <button type="submit" style="padding: 12px 30px; background: linear-gradient(135deg, #dc3545, #c82333); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Grid de Mangás -->
+    <section style="padding: 60px 20px;">
+        <div class="container" style="max-width: 1200px;">
+            @if (Model.Count() == 0)
+            {
+                <div style="text-align: center; padding: 80px 20px;">
+                    <h2 style="color: #666; font-size: 24px; margin-bottom: 20px;">📖 Nenhum mangá encontrado</h2>
+                    <p style="color: #999; font-size: 16px;">Volte em breve para descobrir novos títulos!</p>
+                </div>
+            }
+            else
+            {
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px;">
+                    @foreach (var manga in Model)
+                    {
+                        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer;" 
+                             onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.12)';"
+                             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';">
+                            
+                            <!-- Imagem -->
+                            <div style="height: 320px; background: linear-gradient(135deg, #f0f0f0, #e0e0e0); overflow: hidden; position: relative;">
+                                @if (!string.IsNullOrEmpty(manga.CoverImageUrl))
+                                {
+                                    <img src="@manga.CoverImageUrl" alt="@manga.Title" style="width: 100%; height: 100%; object-fit: cover;" />
+                                }
+                                else
+                                {
+                                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #dc3545, #c82333);">
+                                        <span style="color: white; font-size: 50px;">📖</span>
+                                    </div>
+                                }
+                                
+                                <!-- Badge de Rating -->
+                                <div style="position: absolute; top: 10px; right: 10px; background: #dc3545; color: white; padding: 5px 10px; border-radius: 6px; font-weight: 600; font-size: 12px;">
+                                    ⭐ @manga.Rating.ToString("F1")
+                                </div>
+                            </div>
+
+                            <!-- Info -->
+                            <div style="padding: 20px;">
+                                <h3 style="color: #1a1a1a; font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3;">
+                                    @manga.Title
+                                </h3>
+                                
+                                <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
+                                    por @manga.Author
+                                </p>
+
+                                @if (!string.IsNullOrEmpty(manga.Genre))
+                                {
+                                    <p style="color: #666; font-size: 12px; margin-bottom: 10px;">
+                                        <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px;">@manga.Genre</span>
+                                    </p>
+                                }
+
+                                <div style="margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="color: #dc3545; font-size: 20px; font-weight: 700;">
+                                            R$ @manga.Price.ToString("F2")
+                                        </span>
+                                        <span style="color: #999; font-size: 12px;">
+                                            @manga.Chapters caps.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <a href="/Store/Details/@manga.Id" style="display: block; width: 100%; padding: 12px; background: linear-gradient(135deg, #dc3545, #c82333); color: white; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                    Ver Detalhes
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<style>
+    .container {
+        margin: 0 auto;
+    }
+</style>

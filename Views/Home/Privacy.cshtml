@@ -4,3 +4,137 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
+    ViewData["Title"] = "Política de Privacidade";
+}
+
+<div style="background-color: var(--bg-primary); min-height: 100vh; padding: 60px 20px;">
+    <div style="max-width: 900px; margin: 0 auto;">
+
+        <!-- Cabeçalho -->
+        <div style="margin-bottom: 60px; text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 30px;">
+            <h1 data-i18n="politicaPrivacidade" style="color: var(--text-primary); font-size: 2.8em; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px;">
+                Política de Privacidade
+            </h1>
+            <p data-i18n="suaPrivacidade" style="color: var(--text-secondary); font-size: 1.1em; margin: 0;">
+                Sua privacidade é importante para nós
+            </p>
+        </div>
+
+        <!-- Última Atualização -->
+        <div style="background-color: rgba(220, 53, 69, 0.08); padding: 20px; border-left: 4px solid var(--accent); margin-bottom: 40px; border-radius: 6px;">
+            <p style="color: var(--text-secondary); margin: 0; font-size: 0.95em;">
+                <strong data-i18n="ultimaAtualizacao">Última atualização:</strong> <span data-i18n="janeiro2026">Janeiro 2026</span>
+            </p>
+        </div>
+
+        <!-- Seção 1: Introdução -->
+        <section style="margin-bottom: 50px;">
+            <h2 data-i18n="introducao" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                1. Introdução
+            </h2>
+            <p data-i18n="introTexto" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin: 0;">
+                A OTAKON ("nós", "nosso" ou "nos referimos") é compromissada com a proteção de sua privacidade. Esta Política de Privacidade explica como coletamos, usamos, divulgamos e salvaguardamos suas informações quando você visita nosso site e utiliza nossos serviços.
+            </p>
+        </section>
+
+        <!-- Seção 2: Informações que Coletamos -->
+        <section style="margin-bottom: 50px;">
+            <h2 data-i18n="informacoesColetamos" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                2. Informações que Coletamos
+            </h2>
+
+            <div style="margin-bottom: 25px;">
+                <h3 data-i18n="infosPessoais" style="color: var(--accent); font-size: 1.3em; font-weight: 900; margin-bottom: 10px;">Informações Pessoais</h3>
+                <p data-i18n="infosPessoaisDesc" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin: 0; padding-left: 20px; border-left: 3px solid var(--accent);">
+                    Nome, endereço de email, número de telefone, endereço de entrega, informações de pagamento e histórico de pedidos.
+                </p>
+            </div>
+
+            <div>
+                <h3 data-i18n="infosAutomaticas" style="color: var(--accent); font-size: 1.3em; font-weight: 900; margin-bottom: 10px;">Informações Automáticas</h3>
+                <p data-i18n="infosAutomaticasDesc" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin: 0; padding-left: 20px; border-left: 3px solid var(--accent);">
+                    Endereço IP, tipo de navegador, páginas visitadas, data e hora de acesso, e duração da sessão.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seção 3: Como Usamos as Informações -->
+        <section style="margin-bottom: 50px;">
+            <h2 data-i18n="comoUsamos" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                3. Como Usamos Suas Informações
+            </h2>
+
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">✓</span>
+                    <span data-i18n="processarPedidos">Processar seus pedidos e enviar confirmações</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">✓</span>
+                    <span data-i18n="suporteCliente">Fornecer suporte ao cliente</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">✓</span>
+                    <span data-i18n="melhorarExperiencia">Melhorar a experiência no nosso site</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">✓</span>
+                    <span data-i18n="cumprirObrigacoes">Cumprir obrigações legais</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Seção 4: Segurança -->
+        <section style="margin-bottom: 50px;">
+            <h2 data-i18n="segurancaDados" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                4. Segurança de Dados
+            </h2>
+            <p data-i18n="segurancaTexto" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin: 0;">
+                Implementamos medidas de segurança técnicas e administrativas para proteger suas informações pessoais. No entanto, nenhum método de transmissão pela Internet é 100% seguro. Recomendamos que você mantenha sua senha confidencial.
+            </p>
+        </section>
+
+        <!-- Seção 5: Seus Direitos -->
+        <section style="margin-bottom: 50px;">
+            <h2 data-i18n="seusDirectos" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                5. Seus Direitos
+            </h2>
+            <p data-i18n="seusDirectosTexto" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 20px;">
+                De acordo com as regulações aplicáveis, você tem o direito de:
+            </p>
+
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">→</span>
+                    <span data-i18n="acessarInfo">Acessar suas informações pessoais</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">→</span>
+                    <span data-i18n="corrigirDados">Corrigir dados imprecisos</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin-bottom: 15px; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">→</span>
+                    <span data-i18n="solicitarExclusao">Solicitar a exclusão de seus dados</span>
+                </li>
+                <li style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; padding-left: 30px; position: relative;">
+                    <span style="position: absolute; left: 0; color: var(--accent); font-weight: 900;">→</span>
+                    <span data-i18n="revogarConsentimento">Revogar seu consentimento</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Seção 6: Contato -->
+        <section style="background-color: rgba(220, 53, 69, 0.08); padding: 40px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h2 data-i18n="contato" style="color: var(--text-primary); font-size: 1.8em; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
+                6. Contato
+            </h2>
+            <p data-i18n="contatoTexto" style="color: var(--text-secondary); font-size: 1.05em; line-height: 1.8; margin: 0;">
+                Se você tiver perguntas sobre esta Política de Privacidade ou sobre como tratamos seus dados, entre em contato conosco em:
+            </p>
+            <p data-i18n="emailPrivacidade" style="color: var(--accent); font-size: 1.1em; font-weight: 900; margin-top: 15px; margin-bottom: 0;">
+                privacidade@otakon.pt
+            </p>
+        </section>
+
+    </div>
+</div>
