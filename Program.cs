@@ -9,18 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
-// 🔧 CONFIGURAÇÃO DO PIPELINE
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-// Add Entity Framework Core
+// Add Entity Framework Core (outro DbContext)
 builder.Services.AddDbContext<OtakonDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 
 // Add Authentication with Cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -50,20 +44,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseRouting();
-app.UseAuthorization();
 
 // 📁 Arquivos estáticos (imagens, css, etc.)
-app.MapStaticAssets();
-
-// 🧭 ROTAS
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Loja}/{action=Index}/{id?}") // 👈 Loja como página inicial
-    .WithStaticAssets();
-
-app.Run();
 app.UseStaticFiles();
+
 app.UseRouting();
 
 // Add Authentication middleware
@@ -76,10 +60,10 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+// 🧭 ROTAS
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Loja}/{action=Index}/{id?}") // 👈 Loja como página inicial
     .WithStaticAssets();
 
 app.Run();
-
