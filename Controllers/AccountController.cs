@@ -1,6 +1,11 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OTAKode.Data;
 using OTAKode.Models;
+using System.Security.Claims;
 
 namespace OTAKode.Controllers
 {
@@ -19,48 +24,53 @@ namespace OTAKode.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == model.Username && u.IsActive);
+
+            if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
             {
-                ViewData["ErrorMessage"] = "Usuário e senha são obrigatórios.";
-                return View();
+                ModelState.AddModelError("", "Usuário ou senha inválidos.");
+                return View(model);
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.Username == username && u.IsActive);
-
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-            {
-                ViewData["ErrorMessage"] = "Usuário ou senha inválidos.";
-                return View();
-            }
-
-            // Atualizar último login
             user.LastLogin = DateTime.UtcNow;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            // Guardar informações na sessão
-            HttpContext.Session.SetInt32("UserId", user.Id);
-            HttpContext.Session.SetString("Username", user.Username);
-            HttpContext.Session.SetString("Email", user.Email);
-            HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("FullName", user.FullName ?? user.Username),
+                new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
+            };
 
-            return RedirectToAction("Dashboard");
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties { IsPersistent = true };
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+
+            return RedirectToAction(nameof(Dashboard));
         }
 
+        [Authorize]
         public IActionResult Dashboard()
         {
-            if (HttpContext.Session.GetInt32("UserId") == null)
-            {
-                return RedirectToAction("Login");
-            }
-
             return View();
         }
 
-        public IActionResult Logout()
+        [Authorize]
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Clear();
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
 
@@ -70,51 +80,40 @@ namespace OTAKode.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(string username, string email, string password, string passwordConfirm, string fullName)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            // Validações
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (!ModelState.IsValid)
+                return View(model);
+
+            if (await _context.Users.AnyAsync(u => u.Username == model.Username))
             {
-                ViewData["ErrorMessage"] = "Preencha todos os campos obrigatórios.";
-                return View();
+                ModelState.AddModelError("", "Este usuário já existe.");
+                return View(model);
             }
 
-            if (password != passwordConfirm)
+            if (await _context.Users.AnyAsync(u => u.Email == model.Email))
             {
-                ViewData["ErrorMessage"] = "As senhas não coincidem.";
-                return View();
+                ModelState.AddModelError("", "Este email já está registrado.");
+                return View(model);
             }
 
-            // Verificar se usuário já existe
-            if (_context.Users.Any(u => u.Username == username))
-            {
-                ViewData["ErrorMessage"] = "Este usuário já existe.";
-                return View();
-            }
-
-            if (_context.Users.Any(u => u.Email == email))
-            {
-                ViewData["ErrorMessage"] = "Este email já está registrado.";
-                return View();
-            }
-
-            // Criar novo usuário
             var newUser = new User
             {
-                Username = username,
-                Email = email,
-                FullName = fullName ?? username,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(password),
+                Username = model.Username,
+                Email = model.Email,
+                FullName = model.FullName ?? model.Username,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password),
                 IsAdmin = false,
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
 
             _context.Users.Add(newUser);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            ViewData["SuccessMessage"] = "Conta criada com sucesso! Faça login para continuar.";
-            return RedirectToAction("Login");
+            TempData["SuccessMessage"] = "Conta criada com sucesso! Faça login para continuar.";
+            return RedirectToAction(nameof(Login));
         }
     }
 }

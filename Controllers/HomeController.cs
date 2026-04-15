@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using OTAKON.Models;
+using OTAKode.Models;
 using System.Diagnostics;
 
-namespace OTAKON.Controllers
+namespace OTAKode.Controllers
 {
     public class HomeController : Controller
     {
@@ -17,9 +17,11 @@ namespace OTAKON.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error() => View(model: GetErrorViewModel());
+
+        private ErrorViewModel GetErrorViewModel()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
         }
     }
 }
